@@ -33,7 +33,7 @@ Domains for Dark Heart Labs are at [Spaceship](https://www.spaceship.com/). For 
 
 GitHub Pages may also ask you to add a TXT record for domain verification on first setup; add it in the same Spaceship DNS panel if prompted.
 
-**Other registrars:** same outcome — CNAME `ask` → `jv-darkheartlabs.github.io`. No password sharing required.
+**Important:** Once the custom domain is set in GitHub, `jv-darkheartlabs.github.io/ask/` redirects to `ask.darkheartlabs.technology`. Add the CNAME in Spaceship **before** or immediately after enabling the custom domain, or the site will appear down until DNS propagates.
 
 ## Verify
 
