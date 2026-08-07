@@ -16,17 +16,24 @@ Root [`CNAME`](../CNAME) must contain:
 ask.darkheartlabs.technology
 ```
 
-## GoDaddy DNS
+## Spaceship DNS
 
-In Advanced DNS for `darkheartlabs.technology`:
+Domains for Dark Heart Labs are at [Spaceship](https://www.spaceship.com/). For `darkheartlabs.technology`:
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| CNAME | ask | jv-darkheartlabs.github.io | 1 hour (default) |
+1. Sign in at spaceship.com → **Domain Manager** → select `darkheartlabs.technology`
+2. Open **Advanced DNS** (or **DNS records**)
+3. Add a record:
 
-Remove conflicting A or CNAME records on the `ask` host if present.
+| Type | Host / Name | Value / Points to | TTL |
+|------|-------------|-------------------|-----|
+| CNAME | ask | jv-darkheartlabs.github.io | Auto / 1 hour |
 
-Propagation: typically 5–60 minutes.
+4. Remove any conflicting A or CNAME records on the `ask` host
+5. Save — propagation is typically 5–60 minutes
+
+GitHub Pages may also ask you to add a TXT record for domain verification on first setup; add it in the same Spaceship DNS panel if prompted.
+
+**Other registrars:** same outcome — CNAME `ask` → `jv-darkheartlabs.github.io`. No password sharing required.
 
 ## Verify
 
