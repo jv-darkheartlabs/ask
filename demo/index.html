@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo — Ask · Dark Heart Labs</title>
+  <meta name="description" content="Try the interactive date proposal demo — DHL polished or chaos mode.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/theme-dhl.css">
+  <link rel="stylesheet" href="../assets/css/theme-chaos.css">
+</head>
+<body data-theme="dhl">
+  <div class="confetti-layer" data-confetti aria-hidden="true"></div>
+  <main class="proposal-app">
+    <header class="proposal-header">
+      <span class="proposal-badge">demo · try both themes</span>
+      <button type="button" class="theme-toggle" data-theme-toggle>chaos mode</button>
+    </header>
+
+    <div class="progress-dots" data-progress aria-hidden="true"></div>
+
+    <section class="proposal-step panel" data-step="ask">
+      <p class="step-eyebrow">step 01 · the ask</p>
+      <h1 class="step-title" id="opening-line">Will you go on a date with me?</h1>
+      <p class="step-subtitle" data-recipient-sub>There is only one correct answer. allegedly.</p>
+      <p class="step-subtitle" data-no-hint hidden>the no button is having a moment. try yes?</p>
+      <div class="ask-actions">
+        <button type="button" class="btn btn-yes" data-yes>Yes</button>
+        <button type="button" class="btn btn-no" data-no>No</button>
+      </div>
+    </section>
+
+    <section class="proposal-step panel" data-step="day">
+      <p class="step-eyebrow">step 02 · pick a day</p>
+      <h2 class="step-title">When works for you?</h2>
+      <p class="step-subtitle">Choose a day. Or let fate decide with surprise me.</p>
+      <div class="chip-grid" data-day-chips></div>
+    </section>
+
+    <section class="proposal-step panel" data-step="time">
+      <p class="step-eyebrow">step 03 · pick a time</p>
+      <h2 class="step-title">What time?</h2>
+      <p class="step-subtitle">Fashionably late is still a choice.</p>
+      <div class="chip-grid" data-time-chips></div>
+    </section>
+
+    <section class="proposal-step panel" data-step="food">
+      <p class="step-eyebrow">step 04 · food vote</p>
+      <h2 class="step-title">Cast your vote</h2>
+      <p class="step-subtitle">Democracy, but delicious.</p>
+      <div class="food-grid" data-food-grid></div>
+    </section>
+
+    <section class="proposal-step panel" data-step="summary">
+      <p class="step-eyebrow">step 05 · confirmed</p>
+      <h2 class="step-title">It's a date, <span id="summary-recipient">you</span>.</h2>
+      <ul class="summary-list">
+        <li><span>Day</span><span id="summary-day">—</span></li>
+        <li><span>Time</span><span id="summary-time">—</span></li>
+        <li><span>Food</span><span id="summary-food">—</span></li>
+        <li><span>From</span><span id="summary-sender">—</span></li>
+      </ul>
+      <p class="punchline" data-punchline></p>
+    </section>
+
+    <footer class="proposal-footer">
+      <a href="../">← back to ask</a> · built by <a href="https://darkheartlabs.technology/">dark heart labs</a>
+    </footer>
+  </main>
+  <script src="config.js"></script>
+  <script src="../assets/js/proposal.js"></script>
+</body>
+</html>

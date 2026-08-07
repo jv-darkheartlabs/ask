@@ -1,0 +1,40 @@
+:root,
+[data-theme="dhl"] {
+  --ink: #0a0014;
+  --panel: #120024;
+  --plum: #1a0830;
+  --background: var(--ink);
+  --foreground: #eceaf2;
+  --muted-foreground: #9a8aad;
+  --headline: #eceaf2;
+  --border: #3a1060;
+  --accent: #b47aff;
+  --accent-muted: #c86bff;
+  --accent-secondary: #ff1744;
+  --grid-line: rgba(168, 178, 193, 0.12);
+  --grid-size: 28px;
+  --grid-opacity: 1;
+  --panel-shadow: 0 0 32px rgba(180, 122, 255, 0.08);
+  --glow-accent: 0 0 22px rgba(180, 122, 255, 0.32);
+  --btn-yes-bg: linear-gradient(135deg, #b47aff, #ff1744);
+  --btn-yes-fg: #0a0014;
+  --btn-yes-border: #b47aff;
+  --btn-no-bg: transparent;
+  --btn-no-fg: #9a8aad;
+  --btn-no-border: #3a1060;
+  --font-mono: "Fira Code", ui-monospace, monospace;
+  --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+}
+
+body[data-theme="dhl"] .btn-yes {
+  background: linear-gradient(135deg, #b47aff, #ff1744);
+}
+
+body[data-theme="dhl"] .panel {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: var(--panel);
+}

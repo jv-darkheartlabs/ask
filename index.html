@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ask — Custom Date Proposals · Dark Heart Labs</title>
+  <meta name="description" content="Custom interactive date proposal mini-sites. DHL polished or chaos mode. Built and hosted by Dark Heart Labs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/theme-dhl.css">
+  <style>
+    .landing-page {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    .landing-hero {
+      margin-bottom: 2rem;
+    }
+
+    .landing-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-muted);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .landing-title {
+      margin: 0 0 0.75rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 7vw, 3rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--headline);
+    }
+
+    .landing-lede {
+      margin: 0 0 1.5rem;
+      color: var(--muted-foreground);
+      font-size: 1.05rem;
+      max-width: 36rem;
+    }
+
+    .landing-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .landing-cta .btn {
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--foreground);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      box-shadow: var(--glow-accent);
+    }
+
+    .landing-section {
+      margin-bottom: 2rem;
+    }
+
+    .landing-section h2 {
+      margin: 0 0 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-muted);
+    }
+
+    .steps-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .step-card {
+      padding: 1.25rem;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-card h3 {
+      margin: 0 0 0.5rem;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--muted-foreground);
+      line-height: 1.5;
+    }
+
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+      color: var(--foreground);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .landing-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-foreground);
+    }
+
+    .landing-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .landing-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body data-theme="dhl">
+  <div class="landing-page">
+    <header class="landing-hero">
+      <span class="landing-badge">dark heart labs · ask</span>
+      <h1 class="landing-title">You could text.<br>Or you could ship a website.</h1>
+      <p class="landing-lede">
+        A custom interactive date proposal — runaway No button, day and time picker, food vote,
+        and a punchline that admits you built it in Cursor during lunch. DHL polished by default.
+        Chaos mode available.
+      </p>
+      <div class="landing-cta">
+        <a class="btn btn-yes" href="demo/">Try the demo</a>
+        <a class="btn btn-secondary" href="https://darkheartlabs.technology/contact/?intent=date-proposal">Request one</a>
+      </div>
+    </header>
+
+    <section class="landing-section">
+      <h2>How it works</h2>
+      <div class="steps-grid">
+        <article class="panel step-card">
+          <p class="step-num">01 · brief</p>
+          <h3>Tell me the details</h3>
+          <p>Names, vibe, food options, days and times, theme choice, and any custom punchline.</p>
+        </article>
+        <article class="panel step-card">
+          <p class="step-num">02 · build</p>
+          <h3>I hand-build yours</h3>
+          <p>Private link on ask.darkheartlabs.technology — unlisted slug, noindex by default.</p>
+        </article>
+        <article class="panel step-card">
+          <p class="step-num">03 · send</p>
+          <h3>Share the link</h3>
+          <p>Drop it in a text. Watch them chase the No button. Accept your legend status.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="landing-section panel">
+      <h2>What's included</h2>
+      <ul class="feature-list">
+        <li>Five-step interactive wizard — the ask, day, time, food vote, confirmation</li>
+        <li>Runaway No button (the viral bit)</li>
+        <li>DHL polished theme or full chaos mode</li>
+        <li>Custom copy, food options, and punchline</li>
+        <li>Private unlisted URL · mobile-first · reduced-motion safe</li>
+      </ul>
+    </section>
+
+    <footer class="landing-footer">
+      <a href="https://darkheartlabs.technology/">darkheartlabs.technology</a>
+      · <a href="https://darkheartlabs.technology/services/">services</a>
+      · <a href="https://github.com/jv-darkheartlabs/ask">source</a>
+    </footer>
+  </div>
+</body>
+</html>

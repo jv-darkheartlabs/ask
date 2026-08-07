@@ -1,0 +1,97 @@
+[data-theme="chaos"] {
+  --background: #fff5fb;
+  --panel: #ffffff;
+  --foreground: #1a0a2e;
+  --muted-foreground: #6b4a7a;
+  --headline: #ff006e;
+  --border: #ffbe0b;
+  --accent: #ff006e;
+  --accent-muted: #8338ec;
+  --accent-secondary: #ffbe0b;
+  --grid-line: rgba(255, 190, 11, 0.25);
+  --grid-size: 20px;
+  --grid-opacity: 1;
+  --panel-shadow: 4px 4px 0 #8338ec;
+  --glow-accent: 4px 4px 0 #ffbe0b;
+  --btn-yes-bg: #ff006e;
+  --btn-yes-fg: #ffffff;
+  --btn-yes-border: #ff006e;
+  --btn-no-bg: #e8e8e8;
+  --btn-no-fg: #666;
+  --btn-no-border: #ccc;
+  --font-mono: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+  --font-sans: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+  --font-serif: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+}
+
+body[data-theme="chaos"]::before {
+  background-image: radial-gradient(circle, #ffbe0b 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+body[data-theme="chaos"] .step-title {
+  font-style: normal;
+  font-weight: 700;
+  animation: chaosWiggle 2s ease-in-out infinite;
+}
+
+body[data-theme="chaos"] .btn-yes {
+  background: #ff006e;
+  border-radius: 999px;
+  font-weight: 700;
+  animation: chaosPulse 1.5s ease infinite;
+}
+
+body[data-theme="chaos"] .btn-no {
+  border-radius: 999px;
+}
+
+body[data-theme="chaos"] .panel {
+  border-radius: 1rem;
+  border-width: 3px;
+}
+
+body[data-theme="chaos"] .food-card.is-selected {
+  animation: chaosBounce 0.5s ease;
+}
+
+@keyframes chaosWiggle {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes chaosPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes chaosBounce {
+  0%,
+  100% {
+    transform: scale(1.04);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-theme="chaos"] .step-title,
+  body[data-theme="chaos"] .btn-yes {
+    animation: none;
+  }
+
+  body[data-theme="chaos"] .food-card.is-selected {
+    animation: none;
+  }
+}
