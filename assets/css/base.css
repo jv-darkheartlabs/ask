@@ -340,6 +340,136 @@ body::before {
   text-decoration: underline;
 }
 
+.field-label {
+  display: block;
+  margin: 1rem 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-muted);
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--ink) 60%, transparent);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--foreground);
+  border-color: var(--border);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.deposit-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.deposit-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.deposit-option input {
+  margin-top: 0.2rem;
+  accent-color: var(--accent);
+}
+
+.deposit-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+  line-height: 1.45;
+}
+
+.deposit-link {
+  margin-top: 0.75rem;
+}
+
+.requester-continue,
+.send-request {
+  margin-top: 1.25rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.requester-continue:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.suitor-queue {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+}
+
+.suitor-queue__label {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-muted);
+}
+
+.suitor-queue__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.suitor-queue__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  font-size: 0.82rem;
+}
+
+.suitor-queue__item:last-child {
+  border-bottom: none;
+}
+
+.suitor-queue__name {
+  color: var(--foreground);
+}
+
+.suitor-queue__meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
 .confetti-layer {
   position: fixed;
   inset: 0;
