@@ -61,9 +61,7 @@
     if (reducedMotion) return;
     var layer = qs("[data-confetti]");
     if (!layer) return;
-    var colors = config.theme === "chaos"
-      ? ["#ff006e", "#ffbe0b", "#8338ec", "#3a86ff"]
-      : ["#b47aff", "#ff1744", "#c86bff", "#eceaf2"];
+    var colors = ["#b47aff", "#ff1744", "#c86bff", "#eceaf2"];
     for (var i = 0; i < 24; i++) {
       var piece = document.createElement("span");
       piece.className = "confetti-piece";

@@ -1,32 +1,29 @@
 [data-theme="chaos"] {
-  --background: #fff5fb;
-  --panel: #ffffff;
-  --foreground: #1a0a2e;
-  --muted-foreground: #6b4a7a;
-  --headline: #ff006e;
-  --border: #ffbe0b;
-  --accent: #ff006e;
-  --accent-muted: #8338ec;
-  --accent-secondary: #ffbe0b;
-  --grid-line: rgba(255, 190, 11, 0.25);
-  --grid-size: 20px;
+  --ink: #0a0014;
+  --panel: #120024;
+  --plum: #1a0830;
+  --background: var(--ink);
+  --foreground: #eceaf2;
+  --muted-foreground: #9a8aad;
+  --headline: #eceaf2;
+  --border: #3a1060;
+  --accent: #b47aff;
+  --accent-muted: #c86bff;
+  --accent-secondary: #ff1744;
+  --grid-line: rgba(168, 178, 193, 0.12);
+  --grid-size: 28px;
   --grid-opacity: 1;
-  --panel-shadow: 4px 4px 0 #8338ec;
-  --glow-accent: 4px 4px 0 #ffbe0b;
-  --btn-yes-bg: #ff006e;
-  --btn-yes-fg: #ffffff;
-  --btn-yes-border: #ff006e;
-  --btn-no-bg: #e8e8e8;
-  --btn-no-fg: #666;
-  --btn-no-border: #ccc;
+  --panel-shadow: 0 0 32px rgba(180, 122, 255, 0.08);
+  --glow-accent: 0 0 22px rgba(180, 122, 255, 0.32);
+  --btn-yes-bg: linear-gradient(135deg, #b47aff, #ff1744);
+  --btn-yes-fg: #0a0014;
+  --btn-yes-border: #b47aff;
+  --btn-no-bg: transparent;
+  --btn-no-fg: #9a8aad;
+  --btn-no-border: #3a1060;
   --font-mono: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
   --font-sans: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
   --font-serif: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
-}
-
-body[data-theme="chaos"]::before {
-  background-image: radial-gradient(circle, #ffbe0b 1px, transparent 1px);
-  background-size: 16px 16px;
 }
 
 body[data-theme="chaos"] .step-title {
@@ -36,7 +33,7 @@ body[data-theme="chaos"] .step-title {
 }
 
 body[data-theme="chaos"] .btn-yes {
-  background: #ff006e;
+  background: linear-gradient(135deg, #b47aff, #ff1744);
   border-radius: 999px;
   font-weight: 700;
   animation: chaosPulse 1.5s ease infinite;
@@ -48,11 +45,21 @@ body[data-theme="chaos"] .btn-no {
 
 body[data-theme="chaos"] .panel {
   border-radius: 1rem;
-  border-width: 3px;
+  border-width: 2px;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: var(--panel);
 }
 
 body[data-theme="chaos"] .food-card.is-selected {
   animation: chaosBounce 0.5s ease;
+}
+
+body[data-theme="chaos"] .chip.is-selected,
+body[data-theme="chaos"] .food-card.is-selected {
+  box-shadow: var(--glow-accent);
 }
 
 @keyframes chaosWiggle {
