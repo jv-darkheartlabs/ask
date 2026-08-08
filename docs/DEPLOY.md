@@ -6,7 +6,11 @@
 2. Push `main` branch
 3. Settings → Pages → Source: **GitHub Actions** (workflow in `.github/workflows/pages.yml`)
 4. Settings → Pages → Custom domain: `ask.darkheartlabs.technology`
-5. Wait for DNS check → enable **Enforce HTTPS**
+5. Wait for DNS check → enable **Enforce HTTPS** once the certificate is approved
+
+GitHub issues a Let's Encrypt cert after DNS verifies. Status may show `authorization_pending` for 5–60 minutes (up to 1 hour). Until then Safari can warn the connection is not private — GitHub serves a fallback `*.github.io` cert. Wait rather than bypassing the warning, or use `https://jv-darkheartlabs.github.io/ask/` temporarily.
+
+If HTTPS stays broken after an hour: remove and re-add the custom domain in Pages settings.
 
 ## CNAME file
 
