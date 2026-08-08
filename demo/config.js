@@ -1,5 +1,4 @@
 window.PROPOSAL_CONFIG = {
-  theme: "dhl",
   recipientName: "Jennifer",
   recipientEmail: "jv@darkheartlabs.technology",
   collectRequester: true,
@@ -25,6 +24,5 @@ window.PROPOSAL_CONFIG = {
   },
   punchline:
     "P.S. Normal people text. I made a website in Cursor during lunch for you. No big deal.",
-  showThemeToggle: true,
   noindex: false
 };

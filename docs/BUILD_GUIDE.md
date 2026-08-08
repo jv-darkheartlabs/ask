@@ -15,7 +15,7 @@ Collect:
 |-------|---------|
 | Recipient name | Morgan |
 | Sender name | Jamie |
-| Theme | `dhl` or `chaos` |
+| Theme | DHL (Signal Protocol) |
 | Days | Friday, Saturday, Surprise me |
 | Times | 7:00 PM, 8:00 PM |
 | Food options | Gelatos, Gyros, Nachos, Tacos |
@@ -83,7 +83,6 @@ Send the client the private URL. Remind them:
 |-------|-----|
 | 404 after push | Wait 2–3 min; confirm folder has `index.html` |
 | Styles missing | Check asset paths: `../../assets/` from `p/slug/` |
-| Wrong theme | Set `theme: "dhl"` or `"chaos"` in config |
 
 ---
 

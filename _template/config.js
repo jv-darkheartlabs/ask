@@ -1,5 +1,4 @@
 window.PROPOSAL_CONFIG = {
-  theme: "dhl",
   recipientName: "Alex",
   senderName: "Jordan",
   recipientEmail: "",

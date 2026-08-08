@@ -49,10 +49,9 @@
     return steps.indexOf(name);
   }
 
-  function applyTheme(theme) {
-    var resolved = theme === "chaos" ? "chaos" : "dhl";
-    document.body.setAttribute("data-theme", resolved);
-    document.documentElement.setAttribute("data-theme", resolved);
+  function applyTheme() {
+    document.body.setAttribute("data-theme", "dhl");
+    document.documentElement.setAttribute("data-theme", "dhl");
   }
 
   function applyNoindex() {
@@ -163,12 +162,9 @@
     btn.style.top = y + "px";
     btn.style.transform = "scale(" + scale + ")";
 
-    if (noAttempts === 3 && config.theme !== "chaos") {
+    if (noAttempts === 3) {
       var hint = qs("[data-no-hint]");
       if (hint) hint.hidden = false;
-    }
-    if (noAttempts >= 5 && config.theme === "chaos") {
-      btn.textContent = "nice try lol";
     }
   }
 
@@ -382,23 +378,6 @@
     });
   }
 
-  function initThemeToggle() {
-    if (config.showThemeToggle === false) return;
-    var toggle = qs("[data-theme-toggle]");
-    if (!toggle) return;
-
-    var active = config.theme === "chaos" ? "chaos" : "dhl";
-    toggle.hidden = false;
-    toggle.textContent = active === "dhl" ? "chaos mode" : "dhl mode";
-
-    toggle.addEventListener("click", function () {
-      active = active === "dhl" ? "chaos" : "dhl";
-      config.theme = active;
-      applyTheme(active);
-      toggle.textContent = active === "dhl" ? "chaos mode" : "dhl mode";
-    });
-  }
-
   function initCopy() {
     var opening = config.openingLine || "Will you go on a date with me?";
     setText("opening-line", opening);
@@ -416,7 +395,7 @@
 
   function init() {
     buildStepList();
-    applyTheme(config.theme);
+    applyTheme();
     applyNoindex();
     initCopy();
     renderQueue();
@@ -459,7 +438,6 @@
     }
 
     bindNoButton(qs("[data-no]"));
-    initThemeToggle();
     showStep(0);
   }
 

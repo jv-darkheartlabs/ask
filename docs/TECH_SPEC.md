@@ -10,7 +10,7 @@ People want viral-style interactive date proposals but lack time or skills to bu
 
 ## Solution summary
 
-A config-driven static app: one shared JS engine, per-client `config.js`, two theme modes (DHL / chaos), deployed as folder-per-client on GitHub Pages.
+A config-driven static app: one shared JS engine, per-client `config.js`, DHL theme, deployed as folder-per-client on GitHub Pages.
 
 ## Architecture
 
@@ -38,7 +38,6 @@ flowchart TB
 | `proposal.js` | Wizard steps, runaway No, chip/food UI, theme toggle, confetti |
 | `config.js` | Per-client names, options, theme, punchline, noindex |
 | `theme-dhl.css` | Signal Protocol tokens |
-| `theme-chaos.css` | Viral meme override |
 | `_template/` | Copy source for manual client builds |
 
 ## Tech stack
@@ -80,7 +79,6 @@ See [DEPLOY.md](DEPLOY.md) for DNS and Pages settings.
 | Layer | Command | Coverage |
 |-------|---------|----------|
 | Manual | Open `/demo/` in browser | Full wizard flow |
-| Manual | Toggle chaos mode | Theme swap |
 | Manual | Mobile viewport | Touch No dodge |
 
 ## Security and reliability notes
@@ -94,7 +92,7 @@ See [DEPLOY.md](DEPLOY.md) for DNS and Pages settings.
 | Concern | Path |
 |---------|------|
 | Wizard | `assets/js/proposal.js` |
-| Themes | `assets/css/theme-dhl.css`, `theme-chaos.css` |
+| Themes | `assets/css/theme-dhl.css` |
 | Build SOP | `docs/BUILD_GUIDE.md` |
 | DNS | `docs/DEPLOY.md`, `CNAME` |
 

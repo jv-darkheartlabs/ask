@@ -10,7 +10,7 @@ The viral "Replit date proposal" trend works because it's personal, funny, and i
 
 ## Solution
 
-Dark Heart Labs hand-builds custom proposal pages: runaway No button, day/time/food wizard, DHL polished or chaos theme, private slug on `ask.darkheartlabs.technology`.
+Dark Heart Labs hand-builds custom proposal pages: runaway No button, day/time/food wizard, DHL theme, private slug on `ask.darkheartlabs.technology`.
 
 ## Architecture
 
@@ -61,7 +61,6 @@ See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md). Copy `_template/` to `p/{slug}/`
 |---------|------|
 | Wizard engine | `assets/js/proposal.js` |
 | DHL theme | `assets/css/theme-dhl.css` |
-| Chaos theme | `assets/css/theme-chaos.css` |
 | Client template | `_template/` |
 | Deploy + DNS | `docs/DEPLOY.md` |
 
