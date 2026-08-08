@@ -18,7 +18,7 @@ Collect:
 | Theme | `dhl` or `chaos` |
 | Days | Friday, Saturday, Surprise me |
 | Times | 7:00 PM, 8:00 PM |
-| Food options | Pasta, Tacos, Sushi |
+| Food options | Gelatos, Gyros, Nachos, Tacos |
 | Custom punchline | (optional) |
 | Opening line | (optional override) |
 

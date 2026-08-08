@@ -221,9 +221,10 @@
     });
 
     buildFoodCards(qs("[data-food-grid]"), config.foodOptions || [
-      { id: "pasta", label: "Pasta", emoji: "🍝" },
-      { id: "tacos", label: "Tacos", emoji: "🌮" },
-      { id: "pizza", label: "Pizza", emoji: "🍕" }
+      { id: "gelatos", label: "Gelatos", emoji: "🍨" },
+      { id: "gyros", label: "Gyros", emoji: "🥙" },
+      { id: "nachos", label: "Nachos", emoji: "🧀" },
+      { id: "tacos", label: "Tacos", emoji: "🌮" }
     ], function () {
       renderSummary();
       showStep(4);
