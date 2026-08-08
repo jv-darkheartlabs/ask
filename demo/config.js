@@ -20,8 +20,8 @@ window.PROPOSAL_CONFIG = {
   deposit: {
     label: "Priority security deposit",
     amount: "$25",
-    description: "Completely optional. Skips a few places in the queue.",
-    url: ""
+    description: "Completely optional. Pay via Wise to skip a few places in the queue.",
+    url: "https://wise.com/pay/me/jenniferp3315"
   },
   punchline:
     "P.S. Normal people text. I made a website in Cursor during lunch for you. No big deal.",

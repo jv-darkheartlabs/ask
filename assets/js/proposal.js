@@ -354,7 +354,7 @@
 
     if (link && dep.url) {
       link.href = dep.url;
-      link.textContent = "Pay " + (dep.amount || "deposit") + " →";
+      link.textContent = "Pay " + (dep.amount || "deposit") + " via Wise →";
       link.addEventListener("click", function () {
         selections.depositIntent = true;
         if (check) check.checked = true;
