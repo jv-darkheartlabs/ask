@@ -270,7 +270,7 @@
       "— sent from the Ask mini-site"
     ];
 
-    return {
+    var payload = {
       _subject: subject,
       name: requester,
       email: selections.requesterEmail || "",
@@ -282,6 +282,14 @@
       source: "ask.darkheartlabs.technology",
       message: lines.join("\n")
     };
+    var token = turnstileToken();
+    if (token) payload["cf-turnstile-response"] = token;
+    return payload;
+  }
+
+  function turnstileToken() {
+    var el = document.querySelector('[name="cf-turnstile-response"]');
+    return el && el.value ? el.value : "";
   }
 
   function setSendStatus(text, tone) {
@@ -471,11 +479,21 @@
     }
   }
 
+  function initTurnstile() {
+    if (!config.turnstileSiteKey || !window.DHLTurnstile) return;
+    var wrap = qs("[data-turnstile-config]");
+    if (!wrap) return;
+    wrap.hidden = false;
+    wrap.setAttribute("data-turnstile-site-key", config.turnstileSiteKey);
+    window.DHLTurnstile.mount(wrap);
+  }
+
   function init() {
     buildStepList();
     applyTheme();
     applyNoindex();
     initCopy();
+    initTurnstile();
     renderQueue();
     initDepositBlock();
     initRequesterStep();
