@@ -23,7 +23,7 @@ Test From without domain DNS: `onboarding@resend.dev` (Worker default). Producti
 
 - Put `RESEND_API_KEY` in public JS
 - Fall back to mailto
-- Commit client names or emails in `p/{slug}/` on this public repo
+- Commit client names or emails in `p/{slug}/` on this public repo (`p/` is gitignored; use a private deploy)
 - Call client URLs "private" — they are unlisted and noindexed, not authenticated
 
 ## Alternatives (not preferred)

@@ -39,7 +39,7 @@ python3 -m http.server 8080
 
 ## Client delivery
 
-See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md). Copy `_template/` to `p/{slug}/`, edit `config.js`, push to `main`.
+See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md). Real client pages go in a **private** sibling deploy — never commit `p/{slug}/` here (public repo; gitignored + CI-guarded).
 
 ## URLs
 
@@ -47,13 +47,13 @@ See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md). Copy `_template/` to `p/{slug}/`
 |------|---------|
 | `/` | Service landing |
 | `/demo/` | Interactive demo with theme toggle |
-| `/p/{slug}/` | Client proposal (unlisted, noindex) |
+| `/p/{slug}/` | Client proposals — hosted privately; empty in this repo |
 
 ## Testing
 
 - Manual: open `/demo/` — verify all 5 steps, No button dodge, theme toggle, confetti on food vote
 - Mail: `node --test test/*.test.js` — form endpoint builder and URL allowlist
-- Delivery: Formspree must be configured (`docs/MAIL.md`). mailto is not used.
+- Delivery: Resend Worker must be configured (`docs/MAIL.md`). mailto is not used.
 - Mobile: test on phone-width viewport
 - Reduced motion: enable in OS settings — animations should calm down
 

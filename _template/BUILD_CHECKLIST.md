@@ -1,6 +1,6 @@
 # Client build checklist
 
-Copy this folder to `p/{slug}/` and edit `config.js`.
+Copy this folder to `p/{slug}/` in a **private** deploy tree (not the public `ask` repo) and edit `config.js`.
 
 - [ ] Generate unguessable slug (e.g. `a7k2-alex` — not just the recipient's name)
 - [ ] Set `recipientName` and `senderName`
@@ -8,5 +8,6 @@ Copy this folder to `p/{slug}/` and edit `config.js`.
 - [ ] Write custom `punchline` or keep the default
 - [ ] Confirm `noindex: true` and static robots meta on the page
 - [ ] Do not commit a personal inbox or real client email
-- [ ] Push to `main` and verify `https://ask.darkheartlabs.technology/p/{slug}/`
+- [ ] Confirm you are pushing to a **private** host — not `jv-darkheartlabs/ask`
+- [ ] Verify the live unlisted URL end-to-end (including send)
 - [ ] Send the unlisted URL to the client

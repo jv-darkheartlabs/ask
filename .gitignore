@@ -1,1 +1,6 @@
 demo/config.local.js
+
+# Client proposals — this repo is PUBLIC. Real names/configs stay out of git.
+p/*
+!p/.gitkeep
+!p/README.md

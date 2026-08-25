@@ -85,8 +85,9 @@ See [DEPLOY.md](DEPLOY.md) for DNS and Pages settings.
 
 - Client pages default to `noindex` via static meta plus config
 - `robots.txt` disallows `/p/`
-- Unguessable slugs recommended; URLs are unlisted, not private. This repo is public — do not commit real names or inboxes
-- No PII stored server-side. Send uses Formspree/Web3Forms POST (`docs/MAIL.md`). mailto is not used: iCloud MX junks visitor-originated Gmail/iCloud mail
+- Unguessable slugs recommended; URLs are unlisted, not private
+- This repo is **public**: `p/*` is gitignored (except `.gitkeep` + README); CI fails if client folders are tracked. Deploy real clients from a private sibling — see `docs/BUILD_GUIDE.md`
+- No PII stored server-side. Send uses Resend via `dhl-mail-intake` (`docs/MAIL.md`). mailto is not used: iCloud MX junks visitor-originated Gmail/iCloud mail
 
 ## Evidence map
 
