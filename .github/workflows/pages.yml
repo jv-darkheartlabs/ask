@@ -24,6 +24,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Write demo production overrides
+        env:
+          ASK_DEMO_WISE_URL: ${{ secrets.ASK_DEMO_WISE_URL }}
+        run: |
+          if [ -n "$ASK_DEMO_WISE_URL" ]; then
+            cat > demo/config.local.js <<EOF
+          Object.assign(window.PROPOSAL_CONFIG, {
+            deposit: { url: "$ASK_DEMO_WISE_URL" }
+          });
+          EOF
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

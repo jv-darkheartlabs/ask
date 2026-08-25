@@ -41,6 +41,8 @@ cp -R _template/ p/a7k2-morgan/
 
 Open `p/a7k2-morgan/config.js` and set names, options, and punchline. Keep `noindex: true`. Do not add a personal inbox. Send-to-email is off unless you set `formspreeId` / `formEndpoint` (see [MAIL.md](MAIL.md)).
 
+For the public **demo/** folder, keep PII out of git: set repository secret `ASK_DEMO_WISE_URL` for Pages deploy, or copy `demo/config.local.example.js` to `demo/config.local.js` (gitignored) for local preview.
+
 ## Step 5 — Deploy
 
 ```bash
