@@ -329,6 +329,10 @@
       );
       return;
     }
+    if (config.turnstileSiteKey && !turnstileToken()) {
+      setSendStatus("Complete the security check below, then try again.", "error");
+      return;
+    }
     if (sendBtn) sendBtn.disabled = true;
     setSendStatus("Sending…", null);
 
@@ -337,8 +341,15 @@
         setSendStatus("Request sent. Jennifer will follow up if she is free.", "ok");
         if (sendBtn) sendBtn.hidden = true;
       })
-      .catch(function () {
-        setSendStatus("Send failed. Try again in a moment, or write jv@darkheartlabs.technology directly.", "error");
+      .catch(function (err) {
+        var code = err && err.message ? err.message : "";
+        if (code === "captcha_required" || code === "captcha_failed") {
+          setSendStatus("Complete the security check below, then try again.", "error");
+        } else if (code === "rate_limited") {
+          setSendStatus("Too many attempts. Wait an hour and try again.", "error");
+        } else {
+          setSendStatus("Send failed. Try again in a moment, or write jv@darkheartlabs.technology directly.", "error");
+        }
         if (sendBtn) sendBtn.disabled = false;
       });
   }
