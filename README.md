@@ -10,7 +10,7 @@ The viral "Replit date proposal" trend works because it's personal, funny, and i
 
 ## Solution
 
-Dark Heart Labs hand-builds custom proposal pages: runaway No button, day/time/food wizard, DHL theme, private slug on `ask.darkheartlabs.technology`.
+Dark Heart Labs hand-builds custom proposal pages: runaway No button, day/time/food wizard, DHL theme, unlisted slug on `ask.darkheartlabs.technology`.
 
 ## Architecture
 
@@ -47,11 +47,13 @@ See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md). Copy `_template/` to `p/{slug}/`
 |------|---------|
 | `/` | Service landing |
 | `/demo/` | Interactive demo with theme toggle |
-| `/p/{slug}/` | Client proposal (private) |
+| `/p/{slug}/` | Client proposal (unlisted, noindex) |
 
 ## Testing
 
 - Manual: open `/demo/` — verify all 5 steps, No button dodge, theme toggle, confetti on food vote
+- Mail: `node --test test/*.test.js` — form endpoint builder and URL allowlist
+- Delivery: Formspree must be configured (`docs/MAIL.md`). mailto is not used.
 - Mobile: test on phone-width viewport
 - Reduced motion: enable in OS settings — animations should calm down
 
@@ -60,6 +62,8 @@ See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md). Copy `_template/` to `p/{slug}/`
 | Concern | Path |
 |---------|------|
 | Wizard engine | `assets/js/proposal.js` |
+| Form POST (no mailto) | `assets/js/form-submit.js`, `test/form-submit.test.js` |
+| Mail setup | `docs/MAIL.md`, `docs/adr/0003-server-side-form-delivery.md` |
 | DHL theme | `assets/css/theme-dhl.css` |
 | Client template | `_template/` |
 | Deploy + DNS | `docs/DEPLOY.md` |

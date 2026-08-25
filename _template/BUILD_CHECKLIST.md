@@ -6,6 +6,7 @@ Copy this folder to `p/{slug}/` and edit `config.js`.
 - [ ] Set `recipientName` and `senderName`
 - [ ] Customize `openingLine`, `days`, `times`, and `foodOptions` if desired
 - [ ] Write custom `punchline` or keep the default
-- [ ] Confirm `noindex: true` for private client links
+- [ ] Confirm `noindex: true` and static robots meta on the page
+- [ ] Do not commit a personal inbox or real client email
 - [ ] Push to `main` and verify `https://ask.darkheartlabs.technology/p/{slug}/`
-- [ ] Send the private URL to the client
+- [ ] Send the unlisted URL to the client

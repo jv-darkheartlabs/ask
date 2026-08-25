@@ -1,7 +1,10 @@
 window.PROPOSAL_CONFIG = {
   recipientName: "Jennifer",
-  recipientEmail: "jv@darkheartlabs.technology",
   collectRequester: true,
+  // Resend via dhl-mail-intake Worker (free). Paste Worker URL after deploy.
+  formProvider: "resend",
+  formEndpoint: "https://dhl-mail-intake.cheddar-oxygen.workers.dev",
+  formspreeId: "",
   showQueue: true,
   queueCount: 4,
   badgeLabel: "date requests · open",

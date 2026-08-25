@@ -397,11 +397,36 @@ body::before {
   display: inline-block;
 }
 
-.requester-continue:disabled {
+.requester-continue:disabled,
+.send-request:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.send-status {
+  margin: 0.85rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+}
+
+.send-status.is-error {
+  color: var(--accent);
+}
+
+.send-status.is-ok {
+  color: var(--foreground);
 }
 
 .suitor-queue {

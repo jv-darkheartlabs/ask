@@ -55,7 +55,7 @@ flowchart TB
 
 - `GET /` — service landing
 - `GET /demo/` — public demo
-- `GET /p/{slug}/` — client proposal
+- `GET /p/{slug}/` — client proposal (unlisted; noindex; not authenticated)
 
 ### Configuration
 
@@ -83,15 +83,18 @@ See [DEPLOY.md](DEPLOY.md) for DNS and Pages settings.
 
 ## Security and reliability notes
 
-- Client pages default to `noindex` via config
-- Unguessable slugs recommended for privacy
-- No PII stored server-side
+- Client pages default to `noindex` via static meta plus config
+- `robots.txt` disallows `/p/`
+- Unguessable slugs recommended; URLs are unlisted, not private. This repo is public — do not commit real names or inboxes
+- No PII stored server-side. Send uses Formspree/Web3Forms POST (`docs/MAIL.md`). mailto is not used: iCloud MX junks visitor-originated Gmail/iCloud mail
 
 ## Evidence map
 
 | Concern | Path |
 |---------|------|
 | Wizard | `assets/js/proposal.js` |
+| Form POST | `assets/js/form-submit.js`, `test/form-submit.test.js` |
+| Mail | `docs/MAIL.md`, `docs/adr/0003-server-side-form-delivery.md` |
 | Themes | `assets/css/theme-dhl.css` |
 | Build SOP | `docs/BUILD_GUIDE.md` |
 | DNS | `docs/DEPLOY.md`, `CNAME` |

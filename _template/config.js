@@ -1,8 +1,10 @@
 window.PROPOSAL_CONFIG = {
   recipientName: "Alex",
   senderName: "Jordan",
-  recipientEmail: "",
   collectRequester: false,
+  formProvider: "resend",
+  formspreeId: "",
+  formEndpoint: "",
   showQueue: false,
   openingLine: "Will you go on a date with me?",
   days: ["Friday", "Saturday", "Sunday", "Surprise me"],

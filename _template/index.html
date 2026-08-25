@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
   <title>Proposal</title>
-  <meta name="description" content="A private date proposal.">
+  <meta name="description" content="An unlisted date proposal.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -63,7 +65,8 @@
         <li hidden><span>Priority deposit</span><span id="summary-deposit">—</span></li>
       </ul>
       <p class="punchline" data-punchline></p>
-      <a class="btn btn-yes send-request" data-send-request href="#" hidden>Send request →</a>
+      <button type="button" class="btn btn-yes send-request" data-send-request hidden>Send request</button>
+      <p class="send-status" data-send-status hidden></p>
     </section>
 
     <footer class="proposal-footer">
@@ -71,6 +74,7 @@
     </footer>
   </main>
   <script src="config.js"></script>
+  <script src="../../assets/js/form-submit.js"></script>
   <script src="../../assets/js/proposal.js"></script>
 </body>
 </html>

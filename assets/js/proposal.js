@@ -9,9 +9,13 @@
     time: null,
     food: null,
     requesterName: "",
+    requesterEmail: "",
     depositIntent: false,
     depositPaid: false
   };
+  var NAME_MAX = 80;
+  var EMAIL_MAX = 120;
+  var EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var steps = [];
   var QUEUE_POOL = [
     { name: "Leopold Brandt", place: "Vienna" },
@@ -91,12 +95,14 @@
     picked.forEach(function (entry) {
       var li = document.createElement("li");
       li.className = "suitor-queue__item";
-      li.innerHTML =
-        '<span class="suitor-queue__name">' +
-        entry.name +
-        '</span><span class="suitor-queue__meta">' +
-        entry.place +
-        " · pending</span>";
+      var name = document.createElement("span");
+      name.className = "suitor-queue__name";
+      name.textContent = entry.name;
+      var meta = document.createElement("span");
+      meta.className = "suitor-queue__meta";
+      meta.textContent = entry.place + " · pending";
+      li.appendChild(name);
+      li.appendChild(meta);
       list.appendChild(li);
     });
 
@@ -213,12 +219,15 @@
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "food-card";
-      btn.innerHTML =
-        '<span class="food-emoji" aria-hidden="true">' +
-        (item.emoji || "🍽") +
-        '</span><span class="food-label">' +
-        item.label +
-        "</span>";
+      var emoji = document.createElement("span");
+      emoji.className = "food-emoji";
+      emoji.setAttribute("aria-hidden", "true");
+      emoji.textContent = item.emoji || "🍽";
+      var label = document.createElement("span");
+      label.className = "food-label";
+      label.textContent = item.label;
+      btn.appendChild(emoji);
+      btn.appendChild(label);
       btn.addEventListener("click", function () {
         selections.food = item.label;
         container.querySelectorAll(".food-card").forEach(function (c) {
@@ -243,10 +252,7 @@
     return "Declined (optional)";
   }
 
-  function buildMailtoHref() {
-    var email = config.recipientEmail;
-    if (!email) return null;
-
+  function requestPayload() {
     var recipient = config.recipientName || "Recipient";
     var requester = selections.requesterName || config.senderName || "Anonymous";
     var subject = "[Date request] " + requester + " → " + recipient;
@@ -254,6 +260,7 @@
       "Date request via ask.darkheartlabs.technology",
       "",
       "Requester: " + requester,
+      "Email: " + (selections.requesterEmail || "—"),
       "For: " + recipient,
       "Day: " + (selections.day || "—"),
       "Time: " + (selections.time || "—"),
@@ -263,14 +270,69 @@
       "— sent from the Ask mini-site"
     ];
 
-    return (
-      "mailto:" +
-      encodeURIComponent(email) +
-      "?subject=" +
-      encodeURIComponent(subject) +
-      "&body=" +
-      encodeURIComponent(lines.join("\n"))
-    );
+    return {
+      _subject: subject,
+      name: requester,
+      email: selections.requesterEmail || "",
+      recipient: recipient,
+      day: selections.day || "",
+      time: selections.time || "",
+      food: selections.food || "",
+      deposit: depositSummaryText(),
+      source: "ask.darkheartlabs.technology",
+      message: lines.join("\n")
+    };
+  }
+
+  function setSendStatus(text, tone) {
+    var status = qs("[data-send-status]");
+    if (!status) return;
+    status.textContent = text || "";
+    status.hidden = !text;
+    status.classList.toggle("is-error", tone === "error");
+    status.classList.toggle("is-ok", tone === "ok");
+  }
+
+  function formConfig() {
+    return {
+      formProvider: config.formProvider,
+      formEndpoint: config.formEndpoint,
+      formspreeId: config.formspreeId,
+      formAccessKey: config.formAccessKey
+    };
+  }
+
+  function sendConfigured() {
+    return !!(window.DHLFormSubmit && window.DHLFormSubmit.endpointFor(formConfig()));
+  }
+
+  function sendRequest() {
+    var sendBtn = qs("[data-send-request]");
+    var honey = qs("[data-honeypot]");
+    if (honey && honey.value) {
+      setSendStatus("Request sent. Jennifer will follow up if she is free.", "ok");
+      if (sendBtn) sendBtn.hidden = true;
+      return;
+    }
+    if (!sendConfigured()) {
+      setSendStatus(
+        "Email delivery is not configured. mailto is disabled — iCloud (MX for this domain) delays or junks mail from Gmail and iCloud, often for days.",
+        "error"
+      );
+      return;
+    }
+    if (sendBtn) sendBtn.disabled = true;
+    setSendStatus("Sending…", null);
+
+    window.DHLFormSubmit.submit(formConfig(), requestPayload())
+      .then(function () {
+        setSendStatus("Request sent. Jennifer will follow up if she is free.", "ok");
+        if (sendBtn) sendBtn.hidden = true;
+      })
+      .catch(function () {
+        setSendStatus("Send failed. Try again in a moment, or write jv@darkheartlabs.technology directly.", "error");
+        if (sendBtn) sendBtn.disabled = false;
+      });
   }
 
   function renderSummary() {
@@ -280,6 +342,7 @@
     setText("summary-time", selections.time || "—");
     setText("summary-food", selections.food || "—");
     setText("summary-sender", selections.requesterName || config.senderName || "—");
+    setText("summary-email", selections.requesterEmail || "—");
     setText("summary-deposit", depositSummaryText());
 
     var depositEl = document.getElementById("summary-deposit");
@@ -303,13 +366,18 @@
     }
 
     var sendBtn = qs("[data-send-request]");
-    var mailto = buildMailtoHref();
     if (sendBtn) {
-      if (mailto) {
-        sendBtn.href = mailto;
-        sendBtn.hidden = false;
-      } else {
-        sendBtn.hidden = true;
+      var showSend = !!(config.collectRequester || config.formEndpoint || config.formspreeId);
+      sendBtn.hidden = !showSend;
+      sendBtn.disabled = false;
+      if (showSend && !sendConfigured()) {
+        setSendStatus(
+          "Email delivery is not configured. mailto is disabled — iCloud (MX for this domain) delays or junks mail from Gmail and iCloud, often for days.",
+          "error"
+        );
+        sendBtn.disabled = true;
+      } else if (showSend) {
+        setSendStatus("", null);
       }
     }
   }
@@ -349,7 +417,12 @@
     }
 
     if (link && dep.url) {
-      link.href = dep.url;
+      var safeUrl = window.DHLFormSubmit ? window.DHLFormSubmit.allowWiseUrl(dep.url) : "";
+      if (!safeUrl) {
+        link.hidden = true;
+        return;
+      }
+      link.href = safeUrl;
       link.textContent = "Pay " + (dep.amount || "deposit") + " via Wise →";
       link.addEventListener("click", function () {
         selections.depositIntent = true;
@@ -361,19 +434,24 @@
   function initRequesterStep() {
     if (!config.collectRequester) return;
     var input = qs("[data-requester-name]");
+    var emailInput = qs("[data-requester-email]");
     var continueBtn = qs("[data-requester-continue]");
     if (!input || !continueBtn) return;
 
     function syncContinue() {
-      var valid = input.value.trim().length > 0;
-      continueBtn.disabled = !valid;
-      selections.requesterName = input.value.trim();
+      var name = input.value.trim().slice(0, NAME_MAX);
+      var email = emailInput ? emailInput.value.trim().slice(0, EMAIL_MAX) : "";
+      selections.requesterName = name;
+      selections.requesterEmail = email;
+      var emailOk = !emailInput || EMAIL_OK.test(email);
+      continueBtn.disabled = !(name.length > 0 && emailOk);
     }
 
     input.addEventListener("input", syncContinue);
+    if (emailInput) emailInput.addEventListener("input", syncContinue);
     continueBtn.addEventListener("click", function () {
       syncContinue();
-      if (!selections.requesterName) return;
+      if (continueBtn.disabled) return;
       showStep(stepIndex("day"));
     });
   }
@@ -438,6 +516,15 @@
     }
 
     bindNoButton(qs("[data-no]"));
+
+    var sendBtn = qs("[data-send-request]");
+    if (sendBtn) {
+      sendBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        sendRequest();
+      });
+    }
+
     showStep(0);
   }
 

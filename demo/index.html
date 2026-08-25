@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
   <title>Request a date with Jennifer</title>
   <meta name="description" content="Submit a date request for Jennifer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +42,12 @@
       <h2 class="step-title">Who should Jennifer know you as?</h2>
       <p class="step-subtitle">Full name or the one you answer to in coffee shops.</p>
       <label class="field-label" for="requester-name">Your name</label>
-      <input class="field-input" id="requester-name" data-requester-name type="text" autocomplete="name" placeholder="e.g. Leopold, Chiara, Dmitri…">
+      <input class="field-input" id="requester-name" data-requester-name type="text" autocomplete="name" maxlength="80" placeholder="e.g. Leopold, Chiara, Dmitri…">
+      <label class="field-label" for="requester-email">Your email</label>
+      <input class="field-input" id="requester-email" data-requester-email type="email" autocomplete="email" maxlength="120" placeholder="so Jennifer can reply">
+      <label class="hp" aria-hidden="true">Leave blank
+        <input type="text" name="website" data-honeypot tabindex="-1" autocomplete="off">
+      </label>
       <div class="deposit-block" data-deposit-block hidden>
         <label class="deposit-option">
           <input type="checkbox" data-deposit-check>
@@ -79,6 +85,7 @@
       <h2 class="step-title" data-summary-title>Request ready to send.</h2>
       <ul class="summary-list">
         <li><span>Requester</span><span id="summary-sender">—</span></li>
+        <li><span>Email</span><span id="summary-email">—</span></li>
         <li><span>For</span><span id="summary-recipient">Jennifer</span></li>
         <li><span>Day</span><span id="summary-day">—</span></li>
         <li><span>Time</span><span id="summary-time">—</span></li>
@@ -86,7 +93,8 @@
         <li><span>Priority deposit</span><span id="summary-deposit">—</span></li>
       </ul>
       <p class="punchline" data-punchline></p>
-      <a class="btn btn-yes send-request" data-send-request href="#">Send request to Jennifer →</a>
+      <button type="button" class="btn btn-yes send-request" data-send-request>Send request to Jennifer</button>
+      <p class="send-status" data-send-status hidden></p>
     </section>
 
     <footer class="proposal-footer">
@@ -94,6 +102,7 @@
     </footer>
   </main>
   <script src="config.js"></script>
+  <script src="../assets/js/form-submit.js"></script>
   <script src="../assets/js/proposal.js"></script>
 </body>
 </html>

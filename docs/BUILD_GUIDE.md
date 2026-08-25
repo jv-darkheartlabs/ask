@@ -39,13 +39,13 @@ cp -R _template/ p/a7k2-morgan/
 
 ## Step 4 — Edit config
 
-Open `p/a7k2-morgan/config.js` and set all fields. Keep `noindex: true` for private client links.
+Open `p/a7k2-morgan/config.js` and set names, options, and punchline. Keep `noindex: true`. Do not add a personal inbox. Send-to-email is off unless you set `formspreeId` / `formEndpoint` (see [MAIL.md](MAIL.md)).
 
 ## Step 5 — Deploy
 
 ```bash
 git add p/a7k2-morgan/
-git commit -m "feat: add proposal for Morgan (a7k2-morgan)"
+git commit -m "feat: add unlisted proposal a7k2-morgan"
 git push origin main
 ```
 
@@ -65,10 +65,11 @@ Test on mobile width.
 
 ## Step 7 — Deliver
 
-Send the client the private URL. Remind them:
+Send the client the unlisted URL. Remind them:
 
 - Link is unlisted but not password-protected — don't post publicly if they want surprise
 - They send the link when ready
+- This public GitHub repo must not contain the client folder if surprise or PII matters — host those builds out of band
 
 ## Demo vs client pages
 
