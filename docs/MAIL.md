@@ -17,7 +17,7 @@ formEndpoint: "https://dhl-mail-intake.<account>.workers.dev",
 3. Same URL in mystic-bytes `_config.yml` → `form_endpoint`
 4. Walk `/demo/` and send a test. Expect **Request sent** and mail the same day.
 
-Test From without domain DNS: `onboarding@resend.dev` (Worker default). Production From: verify domain in Resend, keep iCloud MX, set `FROM_EMAIL` to `forms@darkheartlabs.technology`.
+Test From without domain DNS: `onboarding@resend.dev` (Worker default). Production From: verify `send.darkheartlabs.technology` in Resend, keep iCloud MX on root, set Worker `FROM_EMAIL` to `forms@send.darkheartlabs.technology`.
 
 ## Do not
 
