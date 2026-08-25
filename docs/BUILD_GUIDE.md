@@ -7,7 +7,7 @@ Manual delivery workflow for Dark Heart Labs Ask service.
 ## Prerequisites
 
 - Brief from client (via contact form or email)
-- Write access to a **private** deploy target (recommended: `jv-darkheartlabs/ask-clients`)
+- Write access to private repo [`jv-darkheartlabs/ask-clients`](https://github.com/jv-darkheartlabs/ask-clients)
 
 ## Step 1 — Receive the brief
 
@@ -35,27 +35,23 @@ bad:  morgan
 
 ## Step 3 — Copy template (private tree)
 
-Work in a **private** clone or sibling repo that mirrors this layout (`assets/`, `_template/`, `p/`):
+Work in **`ask-clients`** (private), not this public repo:
 
 ```bash
-# One-time: private sibling (example)
-# gh repo create jv-darkheartlabs/ask-clients --private --clone
-# copy assets + _template from ask, enable Pages there
-
+cd ~/Projects/ask-clients
+./scripts/sync-from-ask.sh   # optional — pull latest engine from ../ask
 cp -R _template/ p/a7k2-morgan/
 ```
 
-Local-only under this public repo is fine for drafting (`p/` is gitignored), but **do not** `git add` those folders here.
+Local drafting under public `ask/p/` is still gitignored — do not `git add` those folders here.
 
 ## Step 4 — Edit config
 
-Open `p/a7k2-morgan/config.js` and set names, options, and punchline. Keep `noindex: true`. Do not put a personal inbox in config. Wire send via the shared Worker (`formEndpoint` — see [MAIL.md](MAIL.md)).
+Open `p/a7k2-morgan/config.js` and set names, options, and punchline. Keep `noindex: true`. Do not put a personal inbox in config. `formEndpoint` defaults to the shared Worker (see [MAIL.md](MAIL.md)).
 
 For the public **demo/** folder only: keep PII out of git. Set repository secret `ASK_DEMO_WISE_URL` for Pages deploy, or use `demo/config.local.js` (gitignored).
 
 ## Step 5 — Deploy (private)
-
-Push the client folder to the **private** Pages host — not `jv-darkheartlabs/ask`:
 
 ```bash
 # in ask-clients (private)
@@ -64,7 +60,8 @@ git commit -m "feat: add unlisted proposal a7k2-morgan"
 git push origin main
 ```
 
-Point that repo’s Pages site at a hostname you control (e.g. a private Pages URL, or a dedicated subdomain). Do **not** treat the public `ask` Pages deploy as the place for paid client PII.
+Live URL after DNS: `https://proposals.darkheartlabs.technology/p/a7k2-morgan/`  
+Until DNS: use the Pages URL from the `ask-clients` Actions run. See that repo’s [`docs/DEPLOY.md`](https://github.com/jv-darkheartlabs/ask-clients/blob/main/docs/DEPLOY.md).
 
 ## Step 6 — Verify
 
@@ -91,7 +88,7 @@ Send the client the unlisted URL. Remind them:
 | Path | Repo | noindex |
 |------|------|---------|
 | `/demo/` | Public `ask` | true on demo HTML |
-| `/p/{slug}/` | **Private** deploy only | true (default) |
+| `/p/{slug}/` | Private [`ask-clients`](https://github.com/jv-darkheartlabs/ask-clients) → `proposals.darkheartlabs.technology` | true (default) |
 
 ## Troubleshooting
 
