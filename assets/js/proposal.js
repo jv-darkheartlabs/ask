@@ -346,7 +346,7 @@
         if (code === "captcha_required" || code === "captcha_failed") {
           setSendStatus("Complete the security check below, then try again.", "error");
         } else if (code === "rate_limited") {
-          setSendStatus("Too many attempts. Wait an hour and try again.", "error");
+          setSendStatus("Too many attempts. Wait a minute and try again.", "error");
         } else {
           setSendStatus("Send failed. Try again in a moment, or write jv@darkheartlabs.technology directly.", "error");
         }
