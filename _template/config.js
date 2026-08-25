@@ -17,5 +17,6 @@ window.PROPOSAL_CONFIG = {
   ],
   punchline:
     "P.S. Normal people text. I made a website in Cursor during lunch for you. No big deal.",
-  noindex: true
+  noindex: true,
+  turnstileSiteKey: "0x4AAAAAAEcKzdQzWdenLucK"
 };

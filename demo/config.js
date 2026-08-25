@@ -29,5 +29,5 @@ window.PROPOSAL_CONFIG = {
     "P.S. Normal people text. I made a website in Cursor during lunch for you. No big deal.",
   noindex: true,
   // Optional Turnstile site key (public). Pair with TURNSTILE_SECRET_KEY on dhl-mail-intake Worker.
-  turnstileSiteKey: ""
+  turnstileSiteKey: "0x4AAAAAAEcKzdQzWdenLucK"
 };
